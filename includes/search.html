@@ -1,0 +1,28 @@
+
+<form autocomplete="false" class="search-box search-color content round-medium bottom-0 top-10">
+    <i class="fa fa-search" aria-hidden="true"></i>
+    <input class="shadow-huge js_search_field" type="text"  />
+    <i onclick="clearSearch()" class="fa fa-times color-red2-dark pointer" aria-hidden="true"></i>
+</form>
+
+<div class="content cat-content top-10 js_search_content" style="display:none;">
+    <div class="content-box round-medium shadow-huge">
+        <div id="search-item-rows-container" x-show="!isLoading">
+            <div class="content-title has-title">
+                <h1>Search Results</h1>
+                <span class="color-highlight bottom-5 cat-description searchString" x-text=""></span>
+
+                <div class="divider divider-bottom bottom-10"></div>
+            </div>
+            <div>
+                <div class="js_replace_search_result"></div>
+                
+                <div class="text-center js_spinner" style="display:none;">
+                    <div class="text-center">
+                        <p><i class="fas fa-spinner fa-spin"></i></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<!--  -->
+<div id="menu-instant-item" class="js_menu_instant_item menu-box menu-ready item-instant" data-menu-type="menu-box-modal" data-menu-height="100%" data-menu-width="100%" data-menu-effect="menu-over" style="width: 100%; height: 100%;">
+    <div class="caption shadow-huge item-instant-image-box" >
+        <div class="caption-top left-15 top-40">
+            <h5 class="color-mint-light">
+                <i class="fa fa-star"></i>
+                <span x-text="instantItem.organization.featured_title"></span>
+            </h5>
+        </div>
+
+
+        <div class="caption-top top-10 right-10">
+            <a href="#" @click="closeInstant()" class="close-menu icon icon-xs float-right">
+                <i class="fa fa-times-circle color-red2-light font-24"></i>
+            </a>
+        </div>
+        <div class="caption-bottom bottom-20 left-20">
+            <h1 class="instantItem_name color-red2-light font-30 line-height-huge" style="float: left;"></h1>
+            <span @click="markFavorite(instantItem.id)" class="right-10 top-20 pointer" style="float: right;" x-bind:data-fav-id="instantItem.id">
+                <i class="fas fa-heart fa-3x color-highlight" aria-hidden="true"></i>
+            </span>
+            <div class="clear"></div>
+        </div>
+
+    </div>
+    <div class="content">
+        <p class="price price_market_price_text"></p>
+        <p class="description_long description_long_html"></p>
+
+        <div class="divider"></div>
+    </div>
+
+    <a href="#" @click="closeInstant()" class="close-menu button button-full button-m button-margins round-small shadow-huge bg-highlight bottom-30 color-white">Close</a>
+</div>

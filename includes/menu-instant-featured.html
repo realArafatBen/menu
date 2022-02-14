@@ -1,0 +1,69 @@
+<div id="menu-instant-featured" class="menu-box menu-ready" data-menu-type="menu-box-modal" data-menu-height="100%" data-menu-width="100%" data-menu-effect="menu-over" style="width: 100%; height: 100%;">
+    <div data-height="120" class="caption shadow-huge" style="height: 120px;">
+        <div class="caption-top top-10 right-10">
+            <a href="#" @click="closeFeatured()" class="close-menu icon icon-xs float-right">
+                <i class="fa fa-times-circle color-red2-light font-24"></i>
+            </a>
+        </div>
+        <div class="caption-bottom bottom-20 left-20">
+            <h1 class="color-white font-30 line-height-huge">Featured</h1>
+        </div>
+        <div class="caption-overlay bg-black opacity-40"></div>
+    </div>
+    <div id="featured-row-container" class="content">
+        <template x-for="item in featured" :key="item">
+            <div class="item-row">
+                <div class="item-left pointer" data-menu="menu-instant-item" @click="showInstant(item.id)">
+                    <template x-if="item.image1">
+                        <picture>
+                            <source x-bind:srcset="item.image1_webp" type="image/webp" />
+                            <source x-bind:srcset="item.image1_jpg" type="image/jpeg" />
+                            <img id="itemrow-image" x-bind:data-src="item.image1_jpg" class="icon-round shadow-huge lazyload" />
+                        </picture>
+                    </template>
+                    <template x-if="!item.image1 && item.image2">
+                        <picture>
+                            <source x-bind:srcset="item.image2_small_webp" type="image/webp" />
+                            <source x-bind:srcset="item.image2_small_jpg" type="image/jpeg" />
+                            <img id="itemrow-image" x-bind:data-src="item.image2_small_jpg" class="icon-round shadow-huge cover lazyload" />
+                        </picture>
+                    </template>
+                    <template x-if="item.price_market_price">
+                        <span class="price" x-text="item.price_market_price_text"></span>
+                    </template>
+                    <template x-if="item.price && !item.price_market_price">
+                        <span class="price"><span x-show="item.price_prepend" x-text="item.price_prepend_text"></span> <span x-text="item.front_price"></span></span>
+                    </template>
+                </div>
+                <div class="item-right">
+                    <div @click="markFavorite(item.id)" class="pointer" x-bind:data-fav-id="item.id">
+                        <template x-if="showFav(item.id) === true">
+                            <i class="fas fa-heart top-5 left-10 fa-2x color-highlight" aria-hidden="true"></i>
+                        </template>
+                        <template x-if="showFav(item.id) === false">
+                            <i class="fal fa-heart top-5 left-10 fa-2x color-highlight" aria-hidden="true"></i>
+                        </template>
+                    </div>
+                </div>
+                <div class="item-middle pointer" data-menu="menu-instant-item" @click="showInstant(item.id)">
+                    <span class="title color-highlight">
+                        <span x-html="item.name"></span>
+                        <span x-show="!item.description_short"> &raquo;</span>
+                        <template x-if="item.limited_availability">
+                            <span class="color-yellow1-light left-10"><i class="fa fa-bell-exclamation"></i></span>
+                        </template>
+                        <template x-if="item.featured">
+                            <span class="color-mint-light left-10"><i class="fa fa-star"></i></span>
+                        </template>
+                    </span>
+                    <div class="description">
+                        <span x-html="item.description_short"></span>
+                        <span x-show="item.description_short"> &raquo;</span>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </template>
+    </div>
+    <a href="#" @click="closeFeatured()" class="close-menu button button-full button-m button-margins round-small shadow-huge bg-highlight bottom-30 color-white">Close</a>
+</div>

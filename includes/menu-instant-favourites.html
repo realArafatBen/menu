@@ -1,0 +1,22 @@
+<div id="menu-instant-favorites" class="menu-box menu-ready" data-menu-type="menu-box-modal" data-menu-height="100%" data-menu-width="100%" data-menu-effect="menu-over" style="width: 100%; height: 100%;">
+    <div data-height="120" class="caption shadow-huge" style="height: 120px;">
+        <div class="caption-top top-10 right-10">
+            <a href="#" @click="closeFavorites()" class="close-menu icon icon-xs float-right">
+                <i class="fa fa-times-circle color-red2-light font-24"></i>
+            </a>
+        </div>
+        <div class="caption-bottom bottom-20 left-20">
+            <h1 class="color-white font-30 line-height-huge">Wish List</h1>
+        </div>
+        <div class="caption-overlay bg-black opacity-40"></div>
+    </div>
+    <div id="favorites-row-container" class="content">
+        
+    </div>
+    <p x-show="favorites.length < 1" class="text-center">
+        Click on
+        <i class="far fa-heart left-5 right-5 fa-lg color-red1-dark" aria-hidden="true"></i>
+        s to add to Wish List.
+    </p>
+    <a href="#" @click="closeFavorites()" class="close-menu button button-full button-m button-margins round-small shadow-huge bg-highlight bottom-30 color-white">Close</a>
+</div>
