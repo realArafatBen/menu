@@ -35,8 +35,8 @@
 		$_SESSION['menugrp_id'] = $menugrp_id;
 		
 		# Checking for already exist email 
-		$query = $con->prepare('SELECT * FROM menuitems WHERE item = :item');
-		$query->execute(array(':item'=>$item));
+		$query = $con->prepare('SELECT * FROM menuitems WHERE item = :item AND menugrp_id = :group_id');
+		$query->execute(array(':item'=>$item, ':group_id' => $menugrp_id));
 		
 		if(empty($menugrp_id) || empty($item)){
 			echo alert('Please fill required information!', 'notice');
