@@ -51,7 +51,7 @@ if(isset($_POST['id'])){
         <div class="item-middle pointer" onclick="menu_instant_item(this)" 
         data-name="'.$row['item'].'" data-price="'.$row['price'].'" data-image="'.$item_image.'" data-description="'.$row['descr'].'">
             <span class="title color-highlight">
-                <span x-html="item.name">'. $row['item'] .'</span><span x-show="!item.description_short"> &raquo;</span>
+                <span x-html="item.name" style="margin-left:10px;">'. $row['item'] .'</span><span x-show="!item.description_short"> &raquo;</span>
             </span>
         '. $description .'
         </div>
