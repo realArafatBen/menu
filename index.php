@@ -214,7 +214,7 @@ $menugroups = $statement->fetchAll(PDO::FETCH_ASSOC);
                 $('.price_market_price_text').text(price);
                 $('.description_long_html').text(description);
                 $('.instantItem_name').text(name);
-                $('.item-instant-image-box').css("background-image", 'url(' + image + ')');
+                $('.item-instant-image-box').css("background", 'url(' + image + ')');
                 $('.item-instant-image-box').css("background-position", 'center');
                 $('.js_menu_instant_item').addClass("menu-active");
             }
