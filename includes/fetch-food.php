@@ -4,18 +4,18 @@
 
 if(isset($_POST['id'])){
     $id = $_POST['id'];
-    $sql = "SELECT * FROM menuitems WHERE menugrp_id = '$id' ORDER BY id DESC";
+    $sql = "SELECT * FROM products WHERE category_id = '$id' ORDER BY id DESC";
     $statement = $con->query($sql);
     $items = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    $sql2 = "SELECT * FROM menugroup WHERE id = '$id'";
+    $sql2 = "SELECT * FROM categories WHERE id = '$id'";
     $statement2 = $con->query($sql2);
     // get all publishers
     $menugroup = $statement2->fetch(PDO::FETCH_ASSOC);
     $html = '
             <div id="item-rows-container">
                 <div class="content-title has-title">
-                    <h1 class="category_name">'.$menugroup['groupnm'].'</h1>
+                    <h1 class="category_name">'.$menugroup['name'].'</h1>
                     <span class="color-highlight bottom-5 cat-description category_description_short" x-show="category.description_short"></span>
                     <p class="opacity-60 font-12 color-theme" x-show="category.description_long_html" x-html="category.description_long_html"></p>
                     <div class="divider divider-bottom bottom-10"></div>
@@ -34,14 +34,14 @@ if(isset($_POST['id'])){
         }
 
         if($row['descr'] != ""){
-            $description = '<div class="description"><span x-html="item.description_short">'. $row['descr'] .'</span><span x-show="item.description_short"> &raquo;</span></div>';
+            $description = '<div class="description"><span x-html="item.description_short">'. $row['description'] .'</span><span x-show="item.description_short"> &raquo;</span></div>';
         }else{
             $description = "";
         }
         $html .= '
         <div class="item-row">
         <div class="item-left pointer" onclick="menu_instant_item(this)" 
-        data-name="'.$row['item'].'" data-price="'.$row['price'].'" data-image="'.$item_image.'" data-description="'.$row['descr'].'">
+        data-name="'.$row['name'].'" data-price="'.$row['price'].'" data-image="'.$item_image.'" data-description="'.$row['description'].'">
             '.$item_image.'
             <span class="price" x-text="item.price_market_price_text">'. number_format($row['price'], 2) .'</span>
         </div>
@@ -49,9 +49,9 @@ if(isset($_POST['id'])){
         '. $love .'
         </div>
         <div class="item-middle pointer" onclick="menu_instant_item(this)" 
-        data-name="'.$row['item'].'" data-price="'.$row['price'].'" data-image="'.$item_image.'" data-description="'.$row['descr'].'">
+        data-name="'.$row['name'].'" data-price="'.$row['price'].'" data-image="'.$item_image.'" data-description="'.$row['description'].'">
             <span class="title color-highlight">
-                <span x-html="item.name">'. $row['item'] .'</span><span x-show="!item.description_short"> &raquo;</span>
+                <span x-html="item.name">'. $row['name'] .'</span><span x-show="!item.description_short"> &raquo;</span>
             </span>
         '. $description .'
         </div>

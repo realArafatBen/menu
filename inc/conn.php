@@ -3,7 +3,7 @@ session_start(); ob_start();
 error_reporting(E_ALL);
 
 try{
-    $con = new PDO('mysql:host=localhost;dbname=caledoni_menu','caledoni_ansuite','caledoni_ansuites');
+    $con = new PDO('mysql:host=localhost;dbname=cuebar_cuebar','cuebar_cuebar','RuPzTrgVthMe');
     $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
 }catch(PDOException $e){

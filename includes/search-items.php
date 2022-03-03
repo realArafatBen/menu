@@ -3,7 +3,7 @@
  include_once('../inc/functions.php');
 if(isset($_POST['q'])){
     $q = $_POST['q'];
-    $sql = "SELECT * FROM menuitems WHERE item LIKE '%$q%' ORDER BY id DESC";
+    $sql = "SELECT * FROM products WHERE name LIKE '%$q%' ORDER BY id DESC";
     $statement = $con->query($sql);
     $items = $statement->fetchAll(PDO::FETCH_ASSOC);
 
@@ -19,8 +19,8 @@ if(isset($_POST['q'])){
                 $love = '<div class="js_unlove" data-id="'.$row['id']. '"><i class="fas fa-heart top-5 left-10 fa-2x" style="color:red;" aria-hidden="true"></i></div>';
             }
     
-            if($row['descr'] != ""){
-                $description = '<div class="description"><span x-html="item.description_short">'. $row['descr'] .'</span><span x-show="item.description_short"> &raquo;</span></div>';
+            if($row['description'] != ""){
+                $description = '<div class="description"><span x-html="item.description_short">'. $row['description'] .'</span><span x-show="item.description_short"> &raquo;</span></div>';
             }else{
                 $description = "";
             }
@@ -35,7 +35,7 @@ if(isset($_POST['q'])){
             </div>
             <div class="item-middle pointer" data-menu="menu-instant-item" @click="showInstant(item.id)">
                 <span class="title color-highlight">
-                    <span x-html="item.name">'. $row['item'] .'</span><span x-show="!item.description_short"> &raquo;</span>
+                    <span x-html="item.name">'. $row['name'] .'</span><span x-show="!item.description_short"> &raquo;</span>
                 </span>
             '. $description .'
             </div>

@@ -3,7 +3,7 @@
  include_once('inc/functions.php');
  include_once('inc/pagination.php');
 
-$sql = "SELECT * FROM menugroup ORDER BY sort ASC";
+$sql = "SELECT * FROM categories ORDER BY sort ASC";
 $statement = $con->query($sql);
 // get all publishers
 $menugroups = $statement->fetchAll(PDO::FETCH_ASSOC);
